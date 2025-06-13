@@ -31,9 +31,9 @@ function ProtectedRoute({ children, adminOnly = false, userProfileOnly = false }
   }
 
   // Segunda capa de seguridad: Verificar privilegios de administrador si se requieren
-  if (adminOnly && user.id !== "aqua") {
-    console.warn(`Usuario ${user.id} intentó acceder a área de administrador - acceso denegado`);
-    return <Navigate to="/player" replace />;
+  if (adminOnly && user.role !== "superadmin" && user.role !== "admin") {
+  console.warn(`Usuario ${user.id} con rol ${user.role} intentó acceder a área de administrador - acceso denegado`);
+  return <Navigate to="/events" replace />;
   }
 
   // Tercera capa de seguridad: Verificar acceso a recursos de perfil personal

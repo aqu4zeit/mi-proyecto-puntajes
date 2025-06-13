@@ -446,12 +446,21 @@ function EventsPage() {
             {/* Usuario y navegación */}
             <div className="flex items-center space-x-4">
               {isAdmin() && (
-                <button
-                  onClick={() => setShowCreateForm(true)}
-                  className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-lg"
-                >
-                  ➕ Crear Evento
-                </button>
+                <>
+                  <button
+                    onClick={() => setShowCreateForm(true)}
+                    className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-lg"
+                  >
+                    ➕ Crear Evento
+                  </button>
+                  
+                  <button
+                    onClick={() => navigate("/playlists")}
+                    className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 shadow-lg"
+                  >
+                    🎬 Playlists
+                  </button>
+                </>
               )}
 
               <div className="relative">

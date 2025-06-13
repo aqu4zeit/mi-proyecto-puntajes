@@ -1,3 +1,6 @@
+// En src/App.jsx
+// AGREGAR IMPORT
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 import LoginPage from "./pages/LoginPage";
@@ -5,6 +8,7 @@ import EventsPage from "./pages/EventsPage";
 import PlayerPage from "./pages/PlayerPage";
 import ProfilePage from "./pages/ProfilePage";
 import AdminPanel from "./pages/AdminPanel";
+import PlaylistManager from "./pages/PlaylistManager"; // ← NUEVO IMPORT
 import ProtectedRoute from "./components/ProtectedRoute";
 
 /**
@@ -16,6 +20,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
  * 3. PlayerPage (/player) - Solo accesible durante eventos activos
  * 4. ProfilePage (/profile) - Configuración de perfil del usuario
  * 5. AdminPanel (/admin) - Solo accesible por usuario "aqua"
+ * 6. PlaylistManager (/playlists) - Solo accesible por admins/superadmins
  */
 function App() {
   return (
@@ -61,6 +66,16 @@ function App() {
               element={
                 <ProtectedRoute adminOnly={true}>
                   <AdminPanel />
+                </ProtectedRoute>
+              }
+            />
+            
+            {/* NUEVA RUTA: Gestión de Playlists - Solo para admins */}
+            <Route
+              path="/playlists"
+              element={
+                <ProtectedRoute adminOnly={true}>
+                  <PlaylistManager />
                 </ProtectedRoute>
               }
             />
